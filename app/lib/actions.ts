@@ -32,7 +32,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     customerId: formData.get("customerId"),
     amount: formData.get("amount"),
     status: formData.get("status"),
-  });  
+  });
 
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
@@ -103,9 +103,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 }
 
 export async function deleteInvoice(id: string) {
-  throw new Error("Failed to Delete Invoice");
-
-  // Unreachable code block
   await sql`DELETE FROM invoices WHERE id = ${id}`;
   revalidatePath("/dashboard/invoices");
 }
